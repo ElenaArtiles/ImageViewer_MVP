@@ -1,9 +1,9 @@
 package software.ulpgc.imageviewer.app;
 
-import software.ulpgc.imageviewer.architecture.control.NextImageCommand;
-import software.ulpgc.imageviewer.architecture.control.PreviousImageCommand;
 import software.ulpgc.imageviewer.architecture.io.FileImageLoader;
 import software.ulpgc.imageviewer.architecture.model.Image;
+import software.ulpgc.imageviewer.architecture.presenter.ImagePresenter;
+import software.ulpgc.imageviewer.architecture.view.ImageDisplay;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -15,9 +15,8 @@ public class Main {
         root = "test_images";
         Image image = new FileImageLoader(new File(root)).load();
         SwingMainFrame mainFrame = new SwingMainFrame();
-        mainFrame.getImageDisplay().show(image);
-        mainFrame.add("Prev", new PreviousImageCommand(mainFrame.getImageDisplay()));
-        mainFrame.add("Next", new NextImageCommand(mainFrame.getImageDisplay()));
+        ImageDisplay imageDisplay = mainFrame.getImageDisplay();
+        new ImagePresenter(image, imageDisplay);
         mainFrame.setVisible(true);
     }
 }
