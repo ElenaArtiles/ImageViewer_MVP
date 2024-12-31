@@ -1,9 +1,5 @@
 package software.ulpgc.imageviewer.architecture.view;
 
-import software.ulpgc.imageviewer.architecture.model.Image;
-
-import java.awt.*;
-
 public interface ImageDisplay {
     int width();
     void clear();
